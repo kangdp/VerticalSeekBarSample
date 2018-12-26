@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VerticalSeekbar">
+        <attr name="bgColor" format="color|integer"/>
+        <attr name="progressColor" format="color|integer"/>
+        <attr name="pregressWidth" format="dimension"/>
+        <attr name="thumbShadowColor" format="color|integer"/>
+        <attr name="thumbShadowRadius" format="dimension"/>
+        <attr name="thumbColor" format="color|integer"/>
+        <attr name="thumbStrokeWidth" format="dimension"/>
+        <attr name="thumbStrokeColor" format="color|integer"/>
+        <attr name="bgRadius" format="dimension"/>
+    </declare-styleable>
+</resources>
