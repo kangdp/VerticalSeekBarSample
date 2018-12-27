@@ -130,6 +130,23 @@ public class VerticalSeekbar extends android.support.v7.widget.AppCompatSeekBar 
         return true;
     }
 
+    public void setProgressColor(int progressColor) {
+        this.progressColor = progressColor;
+    }
+
+    public void setThumbColor(int thumbColor) {
+        this.thumbColor = thumbColor;
+    }
+
+    public void setThumbStrokeColor(int thumbStrokeColor) {
+        this.thumbStrokeColor = thumbStrokeColor;
+    }
+
+    public void setThumbShadowColor(int thumbShadowColor) {
+        this.thumbShadowColor = thumbShadowColor;
+    }
+
+
     @Override
     public void setOnSeekBarChangeListener(OnSeekBarChangeListener l) {
         this.onSeekBarChangeListener = l;
