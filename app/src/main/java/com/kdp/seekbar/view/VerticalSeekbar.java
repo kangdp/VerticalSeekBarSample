@@ -17,6 +17,7 @@ import com.kdp.seekbar.R;
  * @description
  */
 public class VerticalSeekbar extends android.support.v7.widget.AppCompatSeekBar {
+    private OnSeekBarChangeListener onSeekBarChangeListener;
     private int bgColor;
     private int bgRadius;
     private int progressColor;
@@ -30,7 +31,6 @@ public class VerticalSeekbar extends android.support.v7.widget.AppCompatSeekBar 
     private int seekBarHeight;
     float percent;
     private Paint mPaint;
-    private Rect mBounds = new Rect();
 
     public VerticalSeekbar(Context context) {
         this(context, null);
@@ -69,14 +69,9 @@ public class VerticalSeekbar extends android.support.v7.widget.AppCompatSeekBar 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-
-
         width = w;
         height = h;
-
         seekBarHeight = height - width;
-        //设置Thumb范围
-        mBounds.set(0, w / 2, w, h - w / 2);
     }
 
     @Override
@@ -125,11 +120,18 @@ public class VerticalSeekbar extends android.support.v7.widget.AppCompatSeekBar 
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_MOVE:
                 int downY = (int) event.getY();
-                if (!mBounds.contains(width/2,downY)) return true;
                 percent = 1 - (float) (downY - width / 2) / seekBarHeight;
+                if (percent >1) percent =1;
                 setProgress((int) (getMax() * percent));
+                if (onSeekBarChangeListener!=null)
+                    onSeekBarChangeListener.onProgressChanged(this,getProgress(),false);
                 break;
         }
         return true;
+    }
+
+    @Override
+    public void setOnSeekBarChangeListener(OnSeekBarChangeListener l) {
+        this.onSeekBarChangeListener = l;
     }
 }
